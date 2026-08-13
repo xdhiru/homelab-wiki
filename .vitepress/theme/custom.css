@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* Font Families */
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Light Theme Variables */
+  --vp-c-brand-1: #d97706; /* Soothing Orangish-Yellow (Amber) */
+  --vp-c-brand-2: #f59e0b;
+  --vp-c-brand-3: #b45309;
+  --vp-c-brand-soft: rgba(217, 119, 6, 0.12);
+  
+  --vp-c-bg: #f8fafc;
+  --vp-c-bg-rgb: 248, 250, 252; /* RGB values for translucent backgrounds */
+  --vp-c-bg-alt: #f1f5f9;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-border: #e2e8f0;
+  --vp-c-gutter: #e2e8f0;
+  
+  --vp-code-block-bg: #f1f5f9; /* Light mode code box background */
+  
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+}
+
+.dark {
+  /* Dark Theme Variables */
+  --vp-c-brand-1: #f59e0b; /* Soothing Orangish-Yellow (Amber) */
+  --vp-c-brand-2: #fbbf24;
+  --vp-c-brand-3: #d97706;
+  --vp-c-brand-soft: rgba(245, 158, 11, 0.15);
+  
+  --vp-c-bg: #090d16;
+  --vp-c-bg-rgb: 9, 13, 22; /* RGB values for translucent backgrounds */
+  --vp-c-bg-alt: #0e1525;
+  --vp-c-bg-elv: #131c32;
+  --vp-c-border: #1e293b;
+  --vp-c-gutter: #1e293b;
+  
+  --vp-code-block-bg: #0b0f19; /* Dark mode code box background */
+  
+  --vp-home-hero-name-background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+/* Heading Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism for Navbar & Sidebar */
+.VPNavBar {
+  background-color: rgba(var(--vp-c-bg-rgb), 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vp-c-border);
+}
+
+.VPSidebar {
+  background-color: rgba(var(--vp-c-bg-rgb), 0.5) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  top: var(--vp-nav-height) !important;
+  height: calc(100vh - var(--vp-nav-height)) !important;
+  padding-top: 32px !important; /* Only override top padding to preserve responsive side alignments */
+}
+
+/* Sidebar typography & spacing enhancements */
+.VPSidebarItem.level-0 {
+  padding-bottom: 18px !important; /* Balanced spacing between topics */
+}
+
+.VPSidebar .title-text {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+}
+
+.VPSidebarItem .text {
+  font-size: 0.92rem !important;
+  padding: 4px 0 !important; /* Balanced padding */
+  line-height: 22px !important; /* Balanced line-height */
+}
+
+.VPSidebar .link {
+  font-size: 0.92rem !important;
+  padding: 0 !important; /* Keep link padding removed to prevent spacing accumulation */
+}
+
+.VPSidebarItem .caret {
+  height: 30px !important; /* Align collapsible caret with balanced link height */
+}
+
+/* Disable redundant sidebar curtain block since container starts below header */
+.VPSidebar .curtain {
+  display: none !important;
+}
+
+/* Card Improvements */
+.VPFeature {
+  border: 1px solid var(--vp-c-border) !important;
+  background-color: var(--vp-c-bg-alt) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 12px 20px -8px rgba(139, 92, 246, 0.15);
+}
+
+/* Code Block Enhancements */
+div[class*="language-"] {
+  border-radius: 10px !important;
+  border: 1px solid var(--vp-c-border) !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  background-color: var(--vp-code-block-bg) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Custom Alert Box (Containers) Style Overrides */
+.custom-block {
+  border-radius: 8px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  padding: 16px 20px !important;
+  margin: 20px 0 !important;
+}
+
+.custom-block.tip {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  background-color: rgba(16, 185, 129, 0.05) !important;
+}
+
+.custom-block.warning {
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  background-color: rgba(245, 158, 11, 0.05) !important;
+}
+
+.custom-block.danger {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+.custom-block.info {
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  background-color: rgba(59, 130, 246, 0.05) !important;
+}
+
+/* Custom styles for copyable commands */
+.copyable-command {
+  position: relative;
+  font-family: var(--vp-font-family-mono);
+  background-color: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+/* Button & interactive animation refinements */
+button {
+  transition: all 0.2s ease;
+}
+
+/* Custom Profile Tab Switcher Styles */
+.profile-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 16px 0;
+  border-bottom: 1px solid var(--vp-c-border);
+  padding-bottom: 8px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+.tab-btn:hover {
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg-alt);
+}
+
+.tab-btn.active {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}

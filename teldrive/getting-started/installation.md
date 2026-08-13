@@ -1,0 +1,33 @@
+# Installation
+
+Teldrive can be installed directly on your system using our one-line installers. If you prefer Docker, skip this section and proceed to the [Usage Guide](/teldrive/getting-started/usage).
+
+## One-Line Installers
+
+Choose the appropriate installation method for your operating system:
+
+::: code-group
+```sh [macOS/Linux (curl)]
+curl -sSL instl.vercel.app/teldrive | bash
+```
+
+```powershell [PowerShell/cmd.exe]
+powershell -c "irm https://instl.vercel.app/teldrive?platform=windows|iex"
+```
+:::
+
+The installer will download the latest Teldrive binary and set it up on your system. Once installed, you can run Teldrive from any terminal window.
+
+## Verifying Installation
+
+After installation, verify that Teldrive is installed correctly:
+
+```sh
+teldrive version
+```
+
+This should display the current version of Teldrive.
+
+## Next Steps
+
+Now that you have installed Teldrive, proceed to the [Usage Guide](/teldrive/getting-started/usage) to set up your configuration and start using Teldrive.
