@@ -66,6 +66,7 @@ Type=oneshot
 ExecStart=/usr/sbin/ethtool -K ens192 rx-checksum on tx-checksum-ip-generic on
 ExecStartPost=/usr/sbin/ethtool -K ens192 sg on tso on gso on gro on lro off
 ExecStartPost=/usr/sbin/ethtool -G ens192 rx 4096 tx 4096
+ExecStartPost=/sbin/ip link set dev ens192 txqueuelen 10000
 
 # --- SSD I/O and Read-Ahead Optimization ---
 ExecStartPost=/bin/sh -c 'echo none > /sys/block/sda/queue/scheduler'

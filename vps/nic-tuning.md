@@ -72,21 +72,12 @@ ip link show ens192
 ```
 *The output should now display `qlen 10000`.*
 
-### 3. Make the Setting Permanent (Udev Rule)
-To ensure the queue length scales up automatically whenever the network card is detected on boot, create a persistent udev rule.
-
-> [!IMPORTANT]
-> **Identify Your Interface Name:** If your VPS uses a different interface name (like `eth0` instead of `ens192`), make sure to replace `ens192` with your actual device name in both the udev rule filename (e.g., `99-eth0-txqueuelen.rules`) and its contents!
-
-Write the rule file:
-```bash
-echo 'SUBSYSTEM=="net", ACTION=="add", KERNEL=="ens192", ATTR{txqueuelen}="10000"' | sudo tee /etc/udev/rules.d/99-ens192-txqueuelen.rules
-```
-
 ---
 
 ## Step 4: Make the Settings Permanent (Systemd Service)
-Commands run via `ethtool` are reset upon reboot. We will create a custom systemd startup service to apply these optimizations automatically when the VPS boots.
+Both `ethtool` hardware offloads and `txqueuelen` modifications are volatile and reset upon system reboot or when network interface managers (like Netplan or systemd-networkd) re-initialize interfaces. 
+
+We will consolidate all tuning adjustments into a unified systemd startup service.
 
 Create the service configuration file:
 ```bash
@@ -105,6 +96,7 @@ Type=oneshot
 ExecStart=/usr/sbin/ethtool -K ens192 rx-checksum on tx-checksum-ip-generic on
 ExecStartPost=/usr/sbin/ethtool -K ens192 sg on tso on gso on gro on lro off
 ExecStartPost=/usr/sbin/ethtool -G ens192 rx 4096 tx 4096
+ExecStartPost=/sbin/ip link set dev ens192 txqueuelen 10000
 RemainAfterExit=yes
 
 [Install]
